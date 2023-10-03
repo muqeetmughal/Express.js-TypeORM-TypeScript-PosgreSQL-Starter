@@ -2,8 +2,9 @@ import jwt from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import { IGetUserAuthInfoRequest } from '../types/definitions';
 import { User } from '../entity/User';
+import { Settings } from '../config/settings';
 
-const secretKey = 'your-secret-key';
+const secretKey = Settings.SECRET_KEY
 
 export const authGuard = (
     req: IGetUserAuthInfoRequest,

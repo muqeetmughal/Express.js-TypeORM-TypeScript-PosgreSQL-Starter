@@ -6,8 +6,6 @@ import { AppDataSource } from './data-source';
 import authRouter from './routes/authRoutes';
 import usersRouter from './routes/userRoutes';
 
-
-
 const app = express();
 
 app.use(express.json());

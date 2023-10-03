@@ -3,11 +3,12 @@ import { body, validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { User } from '../entity/User';
+import { Settings } from '../config/settings';
 
 const authRouter: Router = express.Router();
 
-const secretKey = 'your-secret-key';
-const refreshTokenSecret = 'your-refresh-secret-key';
+const secretKey = Settings.SECRET_KEY;
+const refreshTokenSecret = Settings.SECRET_KEY;
 const accessTokenExpiration = '1h'; // Adjust as needed
 const refreshTokenExpiration = '7d'; // Adjust as needed
 
