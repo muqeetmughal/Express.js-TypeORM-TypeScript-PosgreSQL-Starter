@@ -3,20 +3,21 @@ import express from 'express';
 
 
 import { AppDataSource } from './data-source';
-import userRoutes from './routes/userRoutes'
-import { customMiddleware } from './middlewares/customMiddleware';
+import authRouter from './routes/authRoutes';
+import usersRouter from './routes/userRoutes';
 
 
 
 const app = express();
 
 app.use(express.json());
-app.use(customMiddleware);
 
 
 const port = process.env.PORT || 3500;
 
-app.use('/users', userRoutes);
+app.use('/auth', authRouter);
+app.use('/users', usersRouter);
+
 
 app.get('/', (req, res) => {
     res.send('Hello, Express!');
@@ -26,6 +27,6 @@ app.get('/', (req, res) => {
 
 AppDataSource.initialize().then(async () => {
     app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
+        console.log(`🚀 Server is running on http://localhost:${port}`);
     })
 }).catch(error => console.log(error))

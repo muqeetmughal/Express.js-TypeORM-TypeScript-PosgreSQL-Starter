@@ -1,8 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 import { IsString, IsEmail, IsPhoneNumber, IsBoolean } from 'class-validator';
+import { BaseEntityClass } from './base';
+import { Exclude } from 'class-transformer';
 
 @Entity()
-export class User {
+export class User extends BaseEntityClass {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -20,6 +22,7 @@ export class User {
 
     @Column({ type: 'varchar', length: 255 })
     @IsString()
+    @Exclude()
     password: string;
 
     @Column({ type: 'boolean', default: true })

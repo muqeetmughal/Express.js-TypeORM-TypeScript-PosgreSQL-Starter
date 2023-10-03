@@ -2,7 +2,7 @@
 
 import { BaseEntity as TypeORMBaseEntity, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-export class BaseEntityClass extends TypeORMBaseEntity {
+export abstract class BaseEntityClass extends TypeORMBaseEntity {
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
     created_at: Date;
